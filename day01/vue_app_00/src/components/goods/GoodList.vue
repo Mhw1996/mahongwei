@@ -3,7 +3,8 @@
   <div class="app-goodlist">
     <!-- 商品的项目 -->
     <div class="goods-item" v-for="item of list" :key="item.lid">
-      <img :src="'http://127.0.0.1:3000/'+item.md" alt="">
+      <img :src="'http://127.0.0.1:3000/'+item.md" alt="" @click="jumpInfo" :data-lid="item.lid">
+      <!-- 自定义扩展属性（data-lid），经常用来传递元素中的参数 -->
       <h6>{{item.title}}</h6>
       <div class="info">
         <span class="now">￥{{item.price.toFixed(2)}}</span>
@@ -39,11 +40,18 @@ export default {
         var rows=this.list.concat(result.data.data);
         this.list=rows;
       })
+    },
+    // 为图绑定片单击事件，跳转到商品的详情页
+    jumpInfo(e){
+      // 获取触发事件的，目标元素中的lid,
+      var lid=e.target.dataset.lid
+      this.$router.push("/GoodInfo?pid="+lid)
     }
   },
   created(){
     this.getMore()
   }
+ 
 }
 </script>
 <style scoped>

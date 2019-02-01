@@ -174,3 +174,15 @@ app.post("/addcomment",(req,res)=>{
   }
   })
 })
+// 功能七，获取商品的详细信息
+app.get("/findProduct",(req,res)=>{
+  // 参数pid
+ var pid=req.query.pid //商品的编号
+ console.log(pid)
+ var sql="SELECT lname,price FROM xz_laptop";
+    sql+=" WHERE lid=?"
+ pool.query(sql,[pid],(err,result)=>{
+   if(err) throw err;
+   res.send({code:1,data:result})
+ })
+})

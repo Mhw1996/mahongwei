@@ -8,6 +8,7 @@ import NewsList from "./components/home/NewsList.vue"
 import GoodList from "./components/goods/GoodList.vue"
 import Newsinfo from "./components/home/Newsinfo.vue"
 // import comment from "./components/sub/comment.vue"
+import GoodInfo from "./components/goods/GoodInfo.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +20,7 @@ export default new Router({
     {path:'/NewsList',component:NewsList},
     {path:'/GoodList',component:GoodList},
     {path:'/Newsinfo',component:Newsinfo},
+    {path:'/GoodInfo',component:GoodInfo}
     // {path:'/comment',component:comment}
   ]
 })
